@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('balances', function (Blueprint $table) {
-            $table->id();
-            $table->integer("user_id")->unsigned();
-            $table->double("amount",10,2);
+            $table->increments('id');
+            $table->unsignedBigInteger("user_id");
+            $table->double("amount",10,2)->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

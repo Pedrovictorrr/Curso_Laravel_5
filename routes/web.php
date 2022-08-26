@@ -17,10 +17,11 @@ Route::get('/', [App\Http\Controllers\SiteController::class, 'index'])->name('in
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+Route::prefix('admin')->group(function () {
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/', [App\Http\Controllers\admin\AdminController::class, 'index'])->name('admin');
+        Route::get('/balance', [App\Http\Controllers\admin\BalanceController::class, 'index'])->name('balance');
+        Route::get('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'deposito'])->name('balance.deposito');
+        Route::post('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'store'])->name('balance.deposito.store');
+        });
+    });
