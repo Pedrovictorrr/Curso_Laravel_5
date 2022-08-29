@@ -11,7 +11,18 @@ class Balance extends Model
     
     public function deposito($value)
     {
+        $totalAntes = $this->amount ? $this->amount : 0;
         $this->amount += number_format($value ,2 ,'.' ,'' );
         $this->save();
+
+        $historico = auth()->user()->historic()->create([
+            'type' => 'I' ,
+            'amount'=> $value,
+            'total_before'=> $totalAntes,
+            'total_after'=> $this->amount,
+            'date' => date('Ymd'),
+        ]);
+
+        
     }
 }
