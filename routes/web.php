@@ -22,6 +22,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\admin\AdminController::class, 'index'])->name('admin');
         Route::get('/balance', [App\Http\Controllers\admin\BalanceController::class, 'index'])->name('balance');
         Route::get('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'deposito'])->name('balance.deposito');
+        Route::get('/balance/saque', [App\Http\Controllers\admin\BalanceController::class, 'saque'])->name('balance.saque');
         Route::post('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'store'])->name('balance.deposito.store');
+        Route::post('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'retirar'])->name('balance.deposito.retirar');
         });
     });

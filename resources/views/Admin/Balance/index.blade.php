@@ -24,7 +24,9 @@
                             </div>
                             <a href="#" class="small-box-footer">Histórico <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a class="btn btn-danger">Sacar</a>
+                            @if ($amount > 0)
+                            <a href="{{route('balance.saque')}}" class="btn btn-danger">Sacar</a>
+                            @endif
                             <a href="{{route('balance.deposito')}}" class="btn btn-primary">Depositar</a>
                             </div>
                             
@@ -33,4 +35,5 @@
             </div>
         </div>
     </div>
+    @include('admin.includes.alert')
 @stop

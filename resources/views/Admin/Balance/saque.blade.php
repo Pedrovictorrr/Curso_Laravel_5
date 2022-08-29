@@ -12,13 +12,13 @@
             <div class="card">
                 <div class="card-body">
                     <p class="mb-0">
-                        <form method="POST" action="{{route('balance.deposito.store')}}">
+                        <form method="POST" action="{{route('balance.deposito.retirar')}}">
                             {!!csrf_field()!!}
                             <div class="form-group">
-                                <input type="text" name="value" placeholder="Valor do deposito">
+                                <input type="text" name="value" placeholder="Valor do saque">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Depositar</button>
+                                <button type="submit" class="btn btn-primary">Sacar</button>
                             </div>
                         </form>
                             
