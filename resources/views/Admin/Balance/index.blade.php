@@ -26,6 +26,7 @@
                             </div>
                             @if ($amount > 0)
                             <a href="{{route('balance.saque')}}" class="btn btn-danger">Sacar</a>
+                            <a href="{{route('balance.transferir')}}" class="btn btn-success">Trasnferir</a>
                             @endif
                             <a href="{{route('balance.deposito')}}" class="btn btn-primary">Depositar</a>
                             </div>

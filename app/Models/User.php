@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Historico::class);
     }
+
+    public function receber($sender)
+    {
+        return $this->where('name','LIKE',"%$sender%")->orWhere('email',$sender)->get()->first();
+    }
 }
