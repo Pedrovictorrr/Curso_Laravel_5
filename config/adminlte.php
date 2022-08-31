@@ -314,13 +314,18 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/perfil',
             'icon' => 'fas fa-fw fa-user',
             'submenu'       => [
                 [
                     'text' => 'change_password',
                     'url'  => 'admin/settings',
                     'icon' => 'fas fa-fw fa-lock',
+                ],
+                [
+                    'text' => 'Perfil',
+                    'url'  => 'admin/perfil',
+                    'icon' => 'fas fa-fw fa-profile',
                 ],
                                 ]
         ],

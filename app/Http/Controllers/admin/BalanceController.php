@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Balance;
 use App\Http\Requests\ValidacaoSaldoFormRequest;
 use App\Models\User;
+use App\Models\Historico;
 
 class BalanceController extends Controller
 {
@@ -96,11 +97,21 @@ class BalanceController extends Controller
 
 // ********************* Historico *********************
 
-public function historico()
+public function historico(Historico $Historicos)
 {
-        $historico = auth()->user()->historic()->with(['userSender'])->get();
+        $historicos = auth()->user()->historic()->with(['userSender'])->simplePaginate(5);
+
+        $types = $Historicos->type();
         
-        return view('Admin.Balance.historico', compact('historico'));
+        return view('Admin.Balance.historico', compact('historicos','types'));
+}
+
+public function historicoPesquisa(Request $request,Historico $Historicos)
+{
+        $dataform = $request->except('_token');
+        $historicos =  $Historicos->search($dataform);
+        $types = $Historicos->type();
+        return view('Admin.Balance.historico', compact('historicos','types', 'dataform'));
 }
    
 }

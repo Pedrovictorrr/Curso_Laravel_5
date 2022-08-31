@@ -22,7 +22,12 @@ Route::prefix('admin')->group(function () {
         
         Route::get('/', [App\Http\Controllers\admin\AdminController::class, 'index'])->name('admin');
         Route::get('/balance', [App\Http\Controllers\admin\BalanceController::class, 'index'])->name('balance');
+
+        Route::get('/perfil', [App\Http\Controllers\admin\UserController::class, 'index'])->name('Profile');
+        Route::post('/perfil-update', [App\Http\Controllers\admin\UserController::class, 'ProfileUpdate'])->name('profile.Update');
+
         Route::get('/historico', [App\Http\Controllers\admin\BalanceController::class, 'historico'])->name('historico');
+        Route::any('/historico-search', [App\Http\Controllers\admin\BalanceController::class, 'historicoPesquisa'])->name('historico.pesquisa');
 
         Route::get('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'deposito'])->name('balance.deposito');
         Route::post('/balance/deposito', [App\Http\Controllers\admin\BalanceController::class, 'store'])->name('balance.deposito.store');
